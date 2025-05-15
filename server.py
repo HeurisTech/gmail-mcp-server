@@ -82,7 +82,7 @@ async def send_mail(
         raw = urlsafe_b64encode(message.encode("utf-8")).decode("ascii").rstrip("=")
 
         # send via Gmail API
-        sent = await (
+        sent = (
             google_client.gmail
             .users()
             .messages()
