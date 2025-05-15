@@ -1,0 +1,28 @@
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    required:
+      - CLIENT_ID
+      - CLIENT_SECRET
+      - REFRESH_TOKEN
+    properties:
+      CLIENT_ID:
+        type: string
+        description: The client ID for the gmail API
+      CLIENT_SECRET:
+        type: string
+        description: The client secret for the gmail API
+      REFRESH_TOKEN:
+        type: string
+        description: The refresh token for the gmail API
+  commandFunction: |-
+    (config) => ({
+    "command": "uv",
+      "args": ["run", "server.py"],
+      "env": {
+        "CLIENT_ID": config.CLIENT_ID,
+        "CLIENT_SECRET": config.CLIENT_SECRET,
+        "REFRESH_TOKEN": config.REFRESH_TOKEN
+      }
+    })
