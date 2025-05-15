@@ -1,0 +1,13 @@
+[project]
+name = "gmail-mcp-server"
+version = "0.1.0"
+description = "Gmail (Google mail) operations to list, search, and send emails"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]",
+    "google-auth",
+    "google-auth-oauthlib",
+    "google-auth-httplib2",
+    "google-api-python-client",
+]
