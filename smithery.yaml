@@ -1,5 +1,5 @@
 startCommand:
-  type: http
+  type: stdio
   configSchema:
     type: object
     required:
@@ -16,9 +16,10 @@ startCommand:
       REFRESH_TOKEN:
         type: string
         description: The refresh token for the gmail API
-  commandFunction: |-
+  commandFunction:
+    |-
     (config) => ({
-    "command": "uv",
+      "command": "uv",
       "args": ["run", "server.py"],
       "env": {
         "CLIENT_ID": config.CLIENT_ID,
