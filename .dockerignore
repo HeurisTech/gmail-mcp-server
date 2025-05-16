@@ -3,7 +3,6 @@ __pycache__/
 .vscode/
 .git/
 *.pyc
-.env
 .gitignore
 credentials.json
 tokens.json
