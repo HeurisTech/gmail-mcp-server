@@ -3,48 +3,17 @@ Gmail MCP (Model Context Protocol) server
 Provides tools for common operations with gmail.
 """
 
-import json, os
 from base64 import urlsafe_b64encode
 from typing import Any, Optional
 
 from mcp.server.fastmcp import FastMCP
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
+from google_client import get_google_client
 
 mcp = FastMCP(
     "gmail-mcp",
     version="0.0.1",
     description="Gmail MCP (Model Context Protocol) server"
 )
-
-# Load Google OAuth credentials from environment
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
-refresh_token = os.getenv("REFRESH_TOKEN")
-
-if not client_id or not client_secret or not refresh_token:
-    raise RuntimeError(
-        "Required Google OAuth credentials not found in environment variables"
-    )
-
-class GoogleClient:
-    def __init__(self, *, client_id: str, client_secret: str, refresh_token: str):
-        # No async needed here
-        self._creds = Credentials(
-            token=None,
-            refresh_token=refresh_token,
-            token_uri="https://oauth2.googleapis.com/token",
-            client_id=client_id,
-            client_secret=client_secret,
-        )
-        self.gmail = build("gmail", "v1", credentials=self._creds)
-
-google_client = GoogleClient(
-    client_id=client_id,
-    client_secret=client_secret,
-    refresh_token=refresh_token,
-)
-
 
 @mcp.tool()
 async def send_mail(
@@ -83,7 +52,7 @@ async def send_mail(
 
         # send via Gmail API
         sent = (
-            google_client.gmail
+            get_google_client().gmail
             .users()
             .messages()
             .send(
