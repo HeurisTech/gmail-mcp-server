@@ -14,7 +14,7 @@ mcp = FastMCP(
     description="Provides tools for common operations with gmail (e.g., send_mail)"
 )
 
-@mcp.tool()
+@mcp.tool(name="send_mail", description="Send a new email to recipient(s) with a subject and body")
 async def send_mail(
     to: str,
     subject: str,
