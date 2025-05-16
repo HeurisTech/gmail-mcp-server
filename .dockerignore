@@ -1,9 +1,11 @@
 __pycache__/
 .venv/
+.vscode/
+.git/
 *.pyc
 .env
-.git
 .gitignore
 credentials.json
 tokens.json
 .DS_Store
+uv.lock
