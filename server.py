@@ -1,6 +1,5 @@
 """
-Gmail MCP (Model Context Protocol) server
-Provides tools for common operations with gmail.
+Provides tools for common operations with gmail (e.g., send_mail)
 """
 
 from base64 import urlsafe_b64encode
@@ -10,9 +9,9 @@ from mcp.server.fastmcp import FastMCP
 from google_client import get_google_client
 
 mcp = FastMCP(
-    "gmail-mcp",
-    version="0.0.1",
-    description="Gmail MCP (Model Context Protocol) server"
+    "gmail-mcp-server",
+    version="0.1.0",
+    description="Provides tools for common operations with gmail (e.g., send_mail)"
 )
 
 @mcp.tool()
@@ -50,9 +49,12 @@ async def send_mail(
         # base64url encode and strip padding
         raw = urlsafe_b64encode(message.encode("utf-8")).decode("ascii").rstrip("=")
 
+        # get google client
+        google_client = get_google_client()
+
         # send via Gmail API
         sent = (
-            get_google_client().gmail
+            google_client.gmail
             .users()
             .messages()
             .send(

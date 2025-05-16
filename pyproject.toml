@@ -1,7 +1,7 @@
 [project]
 name = "gmail-mcp-server"
 version = "0.1.0"
-description = "Gmail (Google mail) operations to list, search, and send emails"
+description = "Provides tools for common operations with gmail (e.g., send_mail)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
