@@ -23,6 +23,7 @@ startCommand:
       "env": {
         "CLIENT_ID": config.CLIENT_ID,
         "CLIENT_SECRET": config.CLIENT_SECRET,
-        "REFRESH_TOKEN": config.REFRESH_TOKEN
+        "REFRESH_TOKEN": config.REFRESH_TOKEN,
+        "TRANSPORT": "stdio"
       }
     })

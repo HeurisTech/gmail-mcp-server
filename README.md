@@ -55,7 +55,7 @@ This MCP (Model Context Protocol) server provides tools for common operations wi
     uv sync
     ```
 
-### Get Refresh Token
+**Get Refresh Token**  
 
 ```python
 python get_refresh_token.py
@@ -67,6 +67,14 @@ This will:
 3. On succeeful authentication it will save `token.json` with `refresh_token` along with `client_id`, and `client_secret`.
 4. It will also display the `refresh_token` on console.
  
+
+**Create .env**  
+```bash
+copy example.env .env
+```
+
+Setup the corresponding value using what you received in the previous step.
+
 
 
 ## Inspect
